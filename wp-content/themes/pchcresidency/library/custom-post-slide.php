@@ -17,8 +17,10 @@ URL: http://themble.com/bones/
 
 // let's create the function for the custom type
 function custom_post_slide() { 
+	// creating image size for slide image
+	add_image_size( 'pchc-carousel-slide', 1140, 500, false );
 	// creating (registering) the custom type 
-	register_post_type( 'custom_slide', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
+	register_post_type( 'pchc_slide', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
 	 	// let's now add all the options for this post type
 		array('labels' => array(
 			'name' => __('Slides', 'bonestheme'), /* This is the Title of the Group */
@@ -27,7 +29,7 @@ function custom_post_slide() {
 			'add_new' => __('Add New', 'bonestheme'), /* The add new menu item */
 			'add_new_item' => __('Add New Slide', 'bonestheme'), /* Add New Display Title */
 			'edit' => __( 'Edit', 'bonestheme' ), /* Edit Dialog */
-			'edit_item' => __('Edit Slidess', 'bonestheme'), /* Edit Display Title */
+			'edit_item' => __('Edit Slides', 'bonestheme'), /* Edit Display Title */
 			'new_item' => __('New Slide', 'bonestheme'), /* New Display Title */
 			'view_item' => __('View Slides', 'bonestheme'), /* View Display Title */
 			'search_items' => __('Search Slide', 'bonestheme'), /* Search Custom Type Title */ 
@@ -48,14 +50,14 @@ function custom_post_slide() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+			'supports' => array( 'title', 'editor', 'thumbnail')
 	 	) /* end of options */
 	); /* end of register post type */
 	
 	/* this adds your post categories to your custom post type */
-	//register_taxonomy_for_object_type('category', 'custom_slide');
+	//register_taxonomy_for_object_type('category', 'pchc_slide');
 	/* this adds your post tags to your custom post type */
-	//register_taxonomy_for_object_type('post_tag', 'custom_slide');
+	//register_taxonomy_for_object_type('post_tag', 'pchc_slide');
 	
 } 
 
@@ -68,8 +70,8 @@ function custom_post_slide() {
 	*/
 	
 	// now let's add custom categories (these act like categories)
-    register_taxonomy( 'custom_slide_cat', 
-    	array('custom_slide'), /* if you change the name of register_post_type( 'custom_slide', then you have to change this */
+    register_taxonomy( 'pchc_slide_cat', 
+    	array('pchc_slide'), /* if you change the name of register_post_type( 'pchc_slide', then you have to change this */
     	array('hierarchical' => true,     /* if this is true, it acts like categories */             
     		'labels' => array(
     			'name' => __( 'Slide Categories', 'bonestheme' ), /* name of the custom taxonomy */
