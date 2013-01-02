@@ -12,11 +12,14 @@
 		
 		<!-- Google Chrome Frame for IE -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
+
 		<!-- mobile meta (hooray!) -->
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<meta name="description" content="">
+		<meta name="author" content="Chris Violette">
 		
 		<!-- icons & favicons (for more: http://themble.com/support/adding-icons-favicons/) -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
@@ -26,7 +29,12 @@
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-			
+		
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
 		<!-- drop Google Analytics Here -->
 		<!-- end analytics -->
 		
@@ -34,23 +42,33 @@
 	
 	<body <?php body_class(); ?>>
 	
-		<div id="container">
+		<div class="container">
 			
 			<header class="header" role="banner">
-			
-				<div id="inner-header" class="wrap clearfix">
 					
-					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-					
-					<!-- if you'd like to use the site description you can un-comment it below -->
-					<?php // bloginfo('description'); ?>
-					
-					
-					<nav role="navigation">
-						<?php bones_main_nav(); ?>
-					</nav>
+				<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
+				<h1 id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 				
-				</div> <!-- end #inner-header -->
+				<!-- if you'd like to use the site description you can un-comment it below -->
+				<?php // bloginfo('description'); ?>
+				
+				<div class="row">
+				<nav class="navbar span12" role="navigation">
+					<div class="navbar-inner">
+						<a class="brand" id="logo" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+
+						<div class="nav-collapse">
+							<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>
+						</div>
+					</div>
+				</nav>
+				</div>
 			
 			</header> <!-- end header -->
+		</div><!-- end .container -->

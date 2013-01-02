@@ -241,18 +241,19 @@ MENUS & NAVIGATION
 // the main menu
 function bones_main_nav() {
 	// display the wp3 menu if available
-    wp_nav_menu(array(
-    	'container' => false,                           // remove nav container
-    	'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-    	'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-    	'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-    	'theme_location' => 'main-nav',                 // where it's located in the theme
-    	'before' => '',                                 // before the menu
-        'after' => '',                                  // after the menu
-        'link_before' => '',                            // before each link
-        'link_after' => '',                             // after each link
-        'depth' => 0,                                   // limit the depth of the nav
-    	'fallback_cb' => 'bones_main_nav_fallback'      // fallback function
+	wp_nav_menu(array(
+		'container' => false,                           // remove nav container
+		'container_class' => 'navbar-inner',           // class of container (should you choose to use it)
+		'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
+		'menu_class' => 'nav',         // adding custom nav class
+		'theme_location' => 'main-nav',                 // where it's located in the theme
+		'before' => '',                                 // before the menu
+		'after' => '',                                  // after the menu
+		'link_before' => '',                            // before each link
+		'link_after' => '',                             // after each link
+		'depth' => '2',                                   // limit the depth of the nav
+		'fallback_cb' => 'bones_main_nav_fallback',      // fallback function
+		'walker' => new description_walker()
 	));
 } /* end bones main nav */
 
@@ -290,6 +291,70 @@ function bones_main_nav_fallback() {
 // this is the fallback for footer menu
 function bones_footer_links_fallback() {
 	/* you can put a default here if you like */
+}
+
+// Menu output mods
+class description_walker extends Walker_Nav_Menu
+{
+      function start_el(&$output, $item, $depth, $args)
+      {
+			global $wp_query;
+			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+			
+			$class_names = $value = '';
+			
+			// If the item has children, add the dropdown class for bootstrap
+			if ( $args->has_children ) {
+				$class_names = "dropdown ";
+			}
+			
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			
+			$class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+			$class_names = ' class="'. esc_attr( $class_names ) . '"';
+           
+           	$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+
+           	$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+           	$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+           	$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+           	$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+           	// if the item has children add these two attributes to the anchor tag
+           	if ( $args->has_children ) {
+				$attributes .= ' class="dropdown-toggle" data-toggle="dropdown"';
+			}
+
+            $item_output = $args->before;
+            $item_output .= '<a'. $attributes .'>';
+            $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );
+            $item_output .= $args->link_after;
+            // if the item has children add the caret just before closing the anchor tag
+            if ( $args->has_children ) {
+            	$item_output .= '<b class="caret"></b></a>';
+            }
+            else{
+            	$item_output .= '</a>';
+            }
+            $item_output .= $args->after;
+
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            }
+            
+        function start_lvl(&$output, $depth) {
+            $indent = str_repeat("\t", $depth);
+            $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+        }
+            
+      	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output )
+      	    {
+      	        $id_field = $this->db_fields['id'];
+      	        if ( is_object( $args[0] ) ) {
+      	            $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
+      	        }
+      	        return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+      	    }
+      	
+            
 }
 
 /*********************
@@ -356,29 +421,33 @@ function bones_page_navi($before = '', $after = '') {
 	if($start_page <= 0) {
 		$start_page = 1;
 	}
-	echo $before.'<nav class="page-navigation"><ol class="bones_page_navi clearfix">'."";
+	echo $before.'<nav class="pagination pagination-centered"><ul>'."";
 	if ($start_page >= 2 && $pages_to_show < $max_page) {
 		$first_page_text = __( "First", 'bonestheme' );
-		echo '<li class="bpn-first-page-link"><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">'.$first_page_text.'</a></li>';
+		echo '<li class=""><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">'.$first_page_text.'</a></li>';
 	}
-	echo '<li class="bpn-prev-link">';
-	previous_posts_link('<<');
-	echo '</li>';
+	if( get_previous_posts_link() ) {
+		echo '<li class="prev">';
+		previous_posts_link('<<');
+		echo '</li>';
+	}
 	for($i = $start_page; $i  <= $end_page; $i++) {
 		if($i == $paged) {
-			echo '<li class="bpn-current">'.$i.'</li>';
+			echo '<li class="active"><span>'.$i.'</span></li>';
 		} else {
 			echo '<li><a href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
 		}
 	}
-	echo '<li class="bpn-next-link">';
-	next_posts_link('>>');
-	echo '</li>';
+	if( get_next_posts_link() ) {
+		echo '<li class="next">';
+		next_posts_link('>>');
+		echo '</li>';
+	}
 	if ($end_page < $max_page) {
 		$last_page_text = __( "Last", 'bonestheme' );
-		echo '<li class="bpn-last-page-link"><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
+		echo '<li class=""><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
 	}
-	echo '</ol></nav>'.$after."";
+	echo '</ul></nav>'.$after."";
 } /* end page navi */
 
 /*********************

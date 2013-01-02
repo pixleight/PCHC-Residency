@@ -1,43 +1,36 @@
 <?php get_header(); ?>
-			
-			<div id="content">
+		<div class="container">
 
-				<div id="inner-content" class="wrap clearfix">
-			
-					<div id="main" class="eightcol first clearfix" role="main">
-
-						<article id="post-not-found" class="hentry clearfix">
-						
-							<header class="article-header">
-							
-								<h1><?php _e("Epic 404 - Article Not Found", "bonestheme"); ?></h1>
-						
-							</header> <!-- end article header -->
-					
-							<section class="entry-content">
-							
-								<p><?php _e("The article you were looking for was not found, but maybe try looking again!", "bonestheme"); ?></p>
-					
-							</section> <!-- end article section -->
-
-							<section class="search">
+			<div class="row">
 				
-							    <p><?php get_search_form(); ?></p>
-				
-							</section> <!-- end search section -->
+				<div class="span8" id="main" role="main">
+					<article id="post-not-found" class="hentry clearfix">
 						
-							<footer class="article-footer">
-							
-							    <p><?php _e("This is the 404.php template.", "bonestheme"); ?></p>
-							
-							</footer> <!-- end article footer -->
+						<header class="article-header">
+						
+							<h1><?php _e("Epic 404 - Article Not Found", "bonestheme"); ?></h1>
 					
-						</article> <!-- end article -->
-			
-					</div> <!-- end #main -->
+						</header> <!-- end article header -->
+				
+						<section class="entry-content">
+						
+							<p><?php _e("The article you were looking for was not found, but maybe try looking again!", "bonestheme"); ?></p>
+				
+						</section> <!-- end article section -->
 
-				</div> <!-- end #inner-content -->
-    
-			</div> <!-- end #content -->
+						<section class="search">
+			
+						    <p><?php get_search_form(); ?></p>
+			
+						</section> <!-- end search section -->
+				
+					</article> <!-- end article -->
+				</div> <!-- end #main.span8 -->
+
+				<?php get_sidebar(); ?>
+
+			</div> <!-- end .row -->
+
+		</div> <!-- end .container -->
 
 <?php get_footer(); ?>

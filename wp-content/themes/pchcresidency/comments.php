@@ -21,23 +21,35 @@ The comments page for Bones
 <?php if ( have_comments() ) : ?>
 	<h3 id="comments" class="h2"><?php comments_number(__('<span>No</span> Responses', 'bonestheme'), __('<span>One</span> Response', 'bonestheme'), _n('<span>%</span> Response', '<span>%</span> Responses', get_comments_number(),'bonestheme') );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
 
-	<nav id="comment-nav">
-		<ul class="clearfix">
-	  		<li><?php previous_comments_link() ?></li>
-	  		<li><?php next_comments_link() ?></li>
+	<?php if( get_previous_comments_link() || get_next_comments_link() ) : ?>
+	<nav class="comment-nav">
+		<ul class="pager">
+			<?php if( get_previous_comments_link() ) : ?>
+	  			<li class="previous"><?php previous_comments_link() ?></li>
+	  		<?php endif; ?>
+	  		<?php if( get_next_comments_link() ) : ?>
+	  			<li class="next"><?php next_comments_link() ?></li>
+	  		<?php endif; ?>
 	 	</ul>
 	</nav>
+	<?php endif; ?>
 	
-	<ol class="commentlist">
+	<ol class="commentlist media-list">
 		<?php wp_list_comments('type=comment&callback=bones_comments'); ?>
 	</ol>
 	
-	<nav id="comment-nav">
-		<ul class="clearfix">
-	  		<li><?php previous_comments_link() ?></li>
-	  		<li><?php next_comments_link() ?></li>
-		</ul>
+	<?php if( get_previous_comments_link() || get_next_comments_link() ) : ?>
+	<nav class="comment-nav">
+		<ul class="pager">
+			<?php if( get_previous_comments_link() ) : ?>
+	  			<li class="previous"><?php previous_comments_link() ?></li>
+	  		<?php endif; ?>
+	  		<?php if( get_next_comments_link() ) : ?>
+	  			<li class="next"><?php next_comments_link() ?></li>
+	  		<?php endif; ?>
+	 	</ul>
 	</nav>
+	<?php endif; ?>
   
 	<?php else : // this is displayed if there are no comments so far ?>
 
@@ -100,15 +112,15 @@ The comments page for Bones
 
 	<?php endif; ?>
 	
-	<p><textarea name="comment" id="comment" placeholder="<?php _e('Your Comment here...', 'bonestheme'); ?>" tabindex="4"></textarea></p>
+	<p><textarea name="comment" id="comment" class="input-xxlarge" placeholder="<?php _e('Your Comment here...', 'bonestheme'); ?>" tabindex="4"></textarea></p>
 	
 	<p>
-	  <input name="submit" type="submit" id="submit" class="button" tabindex="5" value="<?php _e('Submit', 'bonestheme'); ?>" />
+	  <input name="submit" type="submit" id="submit" class="btn" tabindex="5" value="<?php _e('Submit', 'bonestheme'); ?>" />
 	  <?php comment_id_fields(); ?>
 	</p>
 	
-	<div class="alert info">
-		<p id="allowed_tags" class="small"><strong>XHTML:</strong> <?php _e('You can use these tags', 'bonestheme'); ?>: <code><?php echo allowed_tags(); ?></code></p>
+	<div class="alert alert-info">
+		<p id="allowed_tags" class="small"><strong>XHTML:</strong> <?php _e('You can use these tags', 'bonestheme'); ?>: <pre><?php echo allowed_tags(); ?></pre></p>
 	</div>
 	
 	<?php do_action('comment_form', $post->ID); ?>
