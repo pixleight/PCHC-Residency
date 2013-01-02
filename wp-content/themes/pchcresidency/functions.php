@@ -30,7 +30,8 @@ require_once('library/bones.php'); // if you remove this, bones will break
     - example custom taxonomy (like categories)
     - example custom taxonomy (like tags)
 */
-require_once('library/custom-post-type.php'); // you can disable this if you like
+// require_once('library/custom-post-type.php'); // you can disable this if you like
+require_once('library/custom-post-slide.php');
 /*
 3. library/admin.php
     - removing some default WordPress dashboard widgets
