@@ -24,13 +24,43 @@ if($loop->have_posts() ) :
 	<a class="right carousel-control" href="#pchcCarousel" data-slide="next">&rsaquo;</a>
 </div><!-- end #pchcCarousel -->
 <style>
+/* Featurettes
+		------------------------- */
+
+.featurette-divider {
+	margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+.featurette {
+	padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+	overflow: hidden; /* Vertically center images part 2: clear their floats. */
+}
+.featurette-image {
+	margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+}
+
+/* Give some space on the sides of the floated elements so text doesn't run right into it. */
+.featurette-image.pull-left {
+	margin-right: 40px;
+}
+.featurette-image.pull-right {
+	margin-left: 40px;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	font-size: 50px;
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+
 /* Carousel base class */
 .carousel {
 	margin-bottom: 60px;
 }
 
 .carousel .container {
-	position: relative;
+	position: static;
 	z-index: 9;
 }
 
@@ -57,10 +87,11 @@ if($loop->have_posts() ) :
 
 .carousel-caption {
 	background-color: transparent;
-	position: static;
+	position: absolute;
+	bottom: 0;
 	max-width: 550px;
-	padding: 0 20px;
-	margin-top: 200px;
+	padding: 20px;
+	margin-left: 50px;
 }
 .carousel-caption h1,
 .carousel-caption .lead {
@@ -93,6 +124,11 @@ if($loop->have_posts() ) :
 	.carousel img {
 		width: auto;
 		height: 500px;
+	}
+
+	.carousel-caption .lead,
+	.carousel-caption .btn {
+		font-size: 16px;
 	}
 
 	.featurette {
@@ -130,15 +166,14 @@ if($loop->have_posts() ) :
 	}
 	.carousel-caption {
 		width: 65%;
-		padding: 0 70px;
-		margin-top: 100px;
+		padding: 20px;
 	}
 	.carousel-caption h1 {
 		font-size: 30px;
 	}
 	.carousel-caption .lead,
 	.carousel-caption .btn {
-		font-size: 18px;
+		font-size: 14px;
 	}
 
 	.marketing .span4 + .span4 {

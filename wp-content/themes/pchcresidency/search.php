@@ -5,13 +5,16 @@
 				
 				<div class="span8" id="main" role="main">
 
-					<h1 class="archive-title"><span><?php _e('Search Results for:', 'bonestheme'); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+					<header class="page-header">
+
+					<h1 class="archive-title"><?php _e('Search:', 'bonestheme'); ?> <small><?php echo esc_attr(get_search_query()); ?></small></h1>
+					</header>
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				
 						<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 					
-							<header class="article-header">
+							<header class="page-header">
 
 								<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 								<p class="byline vcard"><?php
@@ -47,15 +50,12 @@
 				    <?php else : ?>
 				
 					    <article id="post-not-found" class="hentry clearfix">
-					    	<header class="article-header">
-					    		<h1><?php _e("Sorry, No Results.", "bonestheme"); ?></h1>
+					    	<header class="page-header">
+					    		<h3><?php _e("Sorry, No Results.", "bonestheme"); ?></h3>
 					    	</header>
 					    	<section class="entry-content">
-					    		<p><?php _e("Try your search again.", "bonestheme"); ?></p>
+					    		<p class="lead"><?php _e("Try your search again.", "bonestheme"); ?></p>
 					    	</section>
-					    	<footer class="article-footer">
-					    	    <p><?php _e("This is the error message in the search.php template.", "bonestheme"); ?></p>
-					    	</footer>
 					    </article>
 				
 				    <?php endif; ?>
@@ -67,24 +67,5 @@
 			</div> <!-- end .row -->
 
 		</div> <!-- end .container -->
-
-<?php get_footer(); ?>
-
-<?php get_header(); ?>
-			
-			<div id="content">
-
-				<div id="inner-content" class="wrap clearfix">
-			
-					<div id="main" class="eightcol first clearfix" role="main">
-						
-			
-				    </div> <!-- end #main -->
-    			
-    			    <?php get_sidebar(); ?>
-    			
-    			</div> <!-- end #inner-content -->
-    
-			</div> <!-- end #content -->
 
 <?php get_footer(); ?>

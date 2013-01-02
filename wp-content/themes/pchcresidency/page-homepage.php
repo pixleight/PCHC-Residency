@@ -10,13 +10,13 @@ Template Name: Homepage
 
 			<div class="row">
 				
-				<div class="span8" id="main" role="main">
+				<div class="span12" id="main" role="main">
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 						
-						<header class="article-header">
+						<!--<header class="page-header">
 							
 							<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 							<p class="lead"><?php
@@ -24,15 +24,11 @@ Template Name: Homepage
 	  ?></p>
 
 						
-						</header> <!-- end article header -->
+						</header>--> <!-- end article header -->
 					
 						<section class="entry-content clearfix" itemprop="articleBody">
 							<?php the_content(); ?>
-							</section> <!-- end article section -->
-						
-						<footer class="article-footer">
-							<?php the_tags('<span class="tags">' . __('Tags:', 'bonestheme') . '</span> ', ', ', ''); ?>
-						</footer> <!-- end article footer -->
+						</section> <!-- end article section -->
 						
 						<?php comments_template(); ?>
 					
@@ -54,9 +50,7 @@ Template Name: Homepage
 					
 					<?php endif; ?>
 
-				</div> <!-- end #main.span8 -->
-
-				<?php get_sidebar(); ?>
+				</div> <!-- end #main.span12 -->
 
 			</div> <!-- end .row -->
 
