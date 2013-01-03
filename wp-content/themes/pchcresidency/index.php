@@ -8,6 +8,13 @@
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 
+						<?php
+						$args = array(
+								'class' => 'pull-right img-polaroid img-rounded',
+							);
+						the_post_thumbnail( 'pchc-resident-photo', $args );
+						?>
+
 						<header class="page-header">
 							<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 							<p class="lead"><?php

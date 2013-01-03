@@ -51,6 +51,7 @@ require_once('library/custom-post-slide.php');
 // Thumbnail sizes
 //add_image_size( 'pchc-thumb-600', 600, 150, true );
 //add_image_size( 'pchc-thumb-300', 300, 100, true );
+add_image_size( 'pchc-resident-photo', 270, 405, false );
 add_image_size( 'pchc-featurette', 512, 512, true );
 /* 
 to add more sizes, simply copy a line from above 

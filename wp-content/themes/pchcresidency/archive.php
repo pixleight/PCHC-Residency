@@ -57,15 +57,20 @@
 						<header class="page-header">
 							
 							<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-	<p class="byline vcard"><?php
-	printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_category_list(', '));
-	?></p>
+							<p class="byline vcard"><?php
+								printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_category_list(', '));
+							?></p>
 						
 						</header> <!-- end article header -->
 					
 						<section class="entry-content clearfix">
-						
-							<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+
+							<?php
+							$args = array(
+									'class' => 'pull-right img-polaroid img-rounded',
+								);
+							the_post_thumbnail( 'pchc-resident-photo', $args );
+							?>
 						
 							<?php the_excerpt(); ?>
 					
