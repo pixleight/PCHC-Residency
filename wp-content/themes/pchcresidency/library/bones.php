@@ -139,6 +139,8 @@ function bones_scripts_and_styles() {
     // register Bootstrap responsive stylesheet
     wp_register_style( 'bootstrap-responsive-stylesheet', get_stylesheet_directory_uri() . '/library/css/bootstrap-responsive-2.2.2.css', array(), '', 'all' );
 
+    wp_register_style( 'pchcresidency-stylesheet', get_stylesheet_directory_uri() . '/library/css/pchcresidency.css', array(), '', 'all' );
+
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
       wp_enqueue_script( 'comment-reply' );
@@ -157,6 +159,7 @@ function bones_scripts_and_styles() {
 
     wp_enqueue_style( 'bootstrap-stylesheet' );
     wp_enqueue_style( 'bootstrap-responsive-stylesheet' );
+    wp_enqueue_style( 'pchcresidency-stylesheet' );
 
     /*
     I recommend using a plugin to call jQuery
