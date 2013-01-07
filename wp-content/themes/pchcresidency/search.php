@@ -16,10 +16,14 @@
 					
 							<header class="page-header">
 
+								<?php
+								if( has_post_thumbnail() ) :
+									$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'pchc-resident-photo' );
+									?>
+									<img src="<?php echo $thumbnail['0']; ?>" class="pull-right img-polaroid img-rounded pchc-resident-photo-thumb">
+								<?php endif; ?>
+
 								<h3 class="search-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-								<p class="byline vcard"><?php
-                printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_category_list(', '));
-              ?></p>
 					
 							</header> <!-- end article header -->
 				

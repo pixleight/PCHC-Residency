@@ -10,11 +10,15 @@
 						<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 					
 							<header class="page-header">
+
+								<?php
+								if( has_post_thumbnail() ) :
+									$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'pchc-resident-photo' );
+									?>
+									<img src="<?php echo $thumbnail['0']; ?>" class="pull-right img-polaroid img-rounded pchc-resident-photo">
+								<?php endif; ?>
 						
 								<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-								<p class="lead"><?php
-                printf(__('Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&amp;</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F js, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_category_list(', '));
-              ?></p>
 					
 							</header> <!-- end article header -->
 				

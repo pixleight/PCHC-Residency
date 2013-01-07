@@ -34,5 +34,5 @@ wp-content/themes/*
 !wp-content/themes/pchcresidency/
 
 *.DS_Store
-.sass-cache/*
+.sass-cache/
 *Thumbs.DB
