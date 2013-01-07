@@ -45,17 +45,14 @@
 		<div class="container">
 			
 			<header class="header" role="banner">
-					
-				<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-				<h1 id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 				
 				<!-- if you'd like to use the site description you can un-comment it below -->
 				<?php // bloginfo('description'); ?>
 				
 				<div class="row">
-				<nav class="navbar span12" role="navigation">
+				<nav class="navbar navbar-inverse span12" role="navigation">
 					<div class="navbar-inner">
-						<a class="brand" id="logo" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+						<a class="brand" id="logo" title="<?php echo get_bloginfo('description'); ?>" href="<?php echo home_url(); ?>"><span><?php bloginfo('name'); ?></span></a>
 
 						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 							<span class="icon-bar"></span>

@@ -1,3 +1,29 @@
+.admin-bar {
+	padding-top: 30px;
+}
+
+header.header {
+	margin-bottom: 10px;
+}
+
+.navbar .brand {
+	position: relative;
+	width: 150px;
+}
+
+	.navbar .brand span {
+		display: block;
+		position: absolute;
+		width: 150px;
+		height: 85px;
+		top: -22px;
+		background: url(../images/pchc-logo.png) 50% 50% no-repeat;
+		background-size: contain;
+		white-space: nowrap;
+		overflow: hidden;
+		text-indent: 150%;
+	}
+
 /* Post Archives
 ------------------------- */
 .pchc-resident-photo,
@@ -180,3 +206,28 @@
 	}
 
 }
+
+@media (min-width: 1200px) {
+	.navbar .brand {
+		width: 179px;
+	}
+		.navbar .brand span {
+			top: -30px;
+			width: 179px;
+			height: 100px;
+		}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 979px) {
+	.nav-collapse.collapse.in {
+		padding-top: 30px;
+	}
+}
+
+@media (min-width: 980px) {}
