@@ -1,8 +1,13 @@
 .admin-bar {
-	padding-top: 30px;
+	/*padding-top: 30px;*/
+}
+
+iframe {
+	max-width: 100%;
 }
 
 header.header {
+	padding-top: 30px;
 	margin-bottom: 10px;
 }
 
