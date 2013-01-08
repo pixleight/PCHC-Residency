@@ -721,7 +721,7 @@ class Grunion_Contact_Form extends Crunion_Contact_Form_Shortcode {
 			$r .= "<form action='" . esc_url( $url ) . "' method='post' class='contact-form commentsblock'>\n";
 			$r .= $form->body;
 			$r .= "\t<p class='contact-submit'>\n";
-			$r .= "\t\t<input type='submit' value='" . esc_attr__( 'Submit &#187;', 'jetpack' ) . "' class='pushbutton-wide'/>\n";
+			$r .= "\t\t<input type='submit' value='" . esc_attr__( 'Submit <i class="icon-chevron-right icon-white"></i>', 'jetpack' ) . "' class='pushbutton-wide btn btn-primary'/>\n";
 			$r .= "\t\t" . wp_nonce_field( 'contact-form_' . $id, '_wpnonce', true, false ) . "\n"; // nonce and referer
 			$r .= "\t\t<input type='hidden' name='contact-form-id' value='$id' />\n";
 			$r .= "\t\t<input type='hidden' name='action' value='grunion-contact-form' />\n";
