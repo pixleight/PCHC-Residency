@@ -68,7 +68,7 @@
 					
 						<section class="entry-content clearfix">
 						
-							<?php the_content(); ?>
+							<?php the_content('Read More <i class="icon-chevron-right"></i>'); ?>
 					
 						</section> <!-- end article section -->
 						
