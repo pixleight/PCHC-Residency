@@ -54,8 +54,8 @@ $baseLineHeight:        20px !default;
 $altFontFamily:         $serifFontFamily !default;
 
 $headingsFontFamily:    inherit !default; // empty to use BS default, $baseFontFamily
-$headingsFontWeight:    200 !default;    // instead of browser default, bold
-$headingsColor:         inherit !default; // empty to use BS default, $textColor
+$headingsFontWeight:    300 !default;    // instead of browser default, bold
+$headingsColor:         #6E4C39 !default; // empty to use BS default, $textColor
 
 
 // Component sizing
