@@ -50,9 +50,15 @@
 						</header>
 					<?php } ?>
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+					<?php if (have_posts()) : ?>
+
+					<div class="row">
+
+					<?php while (have_posts()) : the_post(); ?>
 					
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
+					<?php $evenodd = (++$j % 2 == 0) ? 'post-even' : 'post-odd'; ?>
+
+					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix span4 ' . $evenodd); ?> role="article">
 						
 						<header class="page-header">
 							<?php
@@ -91,6 +97,8 @@
 						</nav>
 					<?php } ?>
 					
+					</div><!-- end .row -->
+
 					<?php else : ?>
 					
 					<article id="post-not-found" class="hentry clearfix">
