@@ -8,7 +8,7 @@
 					<?php if (is_category()) { ?>
 						<header class="page-header">
 							<h1 class="archive-title h2">
-								<?php _e("Category:", "bonestheme"); ?> <small><?php single_cat_title(); ?></small>
+								<?php single_cat_title(); ?>
 							</h1>
 						</header>
 					
