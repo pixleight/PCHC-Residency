@@ -112,12 +112,18 @@ header.header {
 }
 
 .carousel-caption {
-	background-color: transparent;
+	background-color: rgba(0, 0, 0, 0.25);
 	position: absolute;
 	bottom: 0;
 	max-width: 550px;
 	padding: 20px;
 	margin-left: 50px;
+	-webkit-box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.25);
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
 }
 .carousel-caption h1,
 .carousel-caption .lead {
@@ -126,6 +132,11 @@ header.header {
 	color: #fff;
 	text-shadow: 0 1px 1px rgba(0,0,0,.4);
 }
+
+.carousel-caption .lead {
+	font-weight: 300;
+}
+
 .carousel-caption .btn {
 	margin-top: 10px;
 }
