@@ -5,3 +5,12 @@
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
 	color: #cacbdc;
 }
+
+.carousel {
+	max-width: 960px;
+	margin: 0 auto 60px;
+}
+
+	.carousel-caption {
+		background: url(../images/black-25pct.png) 0 0 repeat;
+	}
