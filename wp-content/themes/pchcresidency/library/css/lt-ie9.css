@@ -1,0 +1,7 @@
+.navbar .brand span {
+	background-image: url(../images/pchc-logo_sm.png);
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+	color: #cacbdc;
+}

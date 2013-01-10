@@ -78,6 +78,10 @@ header.header {
 	letter-spacing: -1px;
 }
 
+.featurette .btn {
+	margin: 5px;
+}
+
 /* Carousel
 ------------------------- */
 

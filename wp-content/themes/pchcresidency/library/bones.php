@@ -132,6 +132,7 @@ function bones_scripts_and_styles() {
 
     // ie-only style sheet
     //wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
+    wp_register_style( 'lt-ie9', get_stylesheet_directory_uri() . '/library/css/lt-ie9.css', array(), '' );
 
     // register Bootstrap stylesheet
     wp_register_style( 'bootstrap-stylesheet', get_stylesheet_directory_uri() . '/library/css/bootstrap-2.2.2.css', array(), '', 'all' );
@@ -160,6 +161,7 @@ function bones_scripts_and_styles() {
     wp_enqueue_style( 'bootstrap-stylesheet' );
     wp_enqueue_style( 'bootstrap-responsive-stylesheet' );
     wp_enqueue_style( 'pchcresidency-stylesheet' );
+    wp_enqueue_style('lt-ie9');
 
     /*
     I recommend using a plugin to call jQuery
@@ -177,7 +179,7 @@ function bones_scripts_and_styles() {
 // adding the conditional wrapper around ie stylesheet
 // source: http://code.garyjones.co.uk/ie-conditional-style-sheets-wordpress/
 function bones_ie_conditional( $tag, $handle ) {
-	if ( 'bones-ie-only' == $handle )
+	if ( 'lt-ie9' == $handle )
 		$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
 	return $tag;
 }
