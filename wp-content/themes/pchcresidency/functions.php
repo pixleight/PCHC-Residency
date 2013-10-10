@@ -48,6 +48,8 @@ require_once('library/custom-post-slide.php');
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
+add_theme_support('post-thumbnails');
+
 // Thumbnail sizes
 //add_image_size( 'pchc-thumb-600', 600, 150, true );
 //add_image_size( 'pchc-thumb-300', 300, 100, true );
